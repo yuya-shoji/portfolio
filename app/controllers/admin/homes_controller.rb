@@ -1,0 +1,2 @@
+class AdminHomesController < ApplicationController
+end

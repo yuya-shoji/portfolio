@@ -1,0 +1,9 @@
+<h2>担当者の情報</h2>
+  <%= form_with(model: @staff, local: true) do |f| %>
+
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+  <% end %>

@@ -1,0 +1,18 @@
+<h2>予約入力</h2>
+<%= form_with(model: @reservation, local: true) do |f| %>
+
+<h3>カレンダー</h3>
+
+
+
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div>
+  <%= f.label :staff %>
+  <%= f.text_field :staff %>
+</div>
+
+<% end %>

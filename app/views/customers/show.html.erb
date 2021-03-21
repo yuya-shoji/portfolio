@@ -1,1 +1,15 @@
 <h2>マイページ<h2>
+
+<p>登録情報</p>
+<%= link_to "編集する", edit_customer_path(current_customer.id) %>
+
+<table>
+  <thead>
+    <tr><th>氏名</th><td><%= current_customer.name %></td></tr>
+    <tr><th>住所</th><td><%= current_customer.address %></td></tr>
+    <tr><th>電話番号</th><td><%= current_customer.telephone_number %></td></tr>
+    <tr><th>メールアドレス</th><td><%= current_customer.email %></td></tr>
+  </thead>
+</table>
+
+<%= link_to "退会はこちら", quit_customers_path(current_customer.id) %>

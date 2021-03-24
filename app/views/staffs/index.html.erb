@@ -2,8 +2,25 @@
   <%= form_with(model: @staff, local: true) do |f| %>
 
 <div>
-  <%= f.label :name %>
+  <%= f.label :name, "名前" %>
   <%= f.text_field :name %>
 </div>
 
+<div>
+  <%= f.label :Hiredate, "入社日" %>
+
+</div>
+
+<div>
+  <%= f.label :hobby, "趣味" %>
+
+</div>
+
+<div>
+  <%= f.label :word, "一言" %>
+
+</div>
+
   <% end %>
+
+  <%= link_to "予約一覧に戻る", reservations_path %>

@@ -8,3 +8,8 @@
 
 <h3>担当者</h3>
 
+<%= form_with model: @reservation, url:reservations_path, local: true do |f| %>
+
+<%= f.submit "確定" %>
+
+<% end %>

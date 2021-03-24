@@ -3,6 +3,7 @@ class Admins::ReservationsController < ApplicationController
     end
 
     def confirm
+        @reservation = Reservation.find(current_customer.id)
     end
 
     def complete
@@ -22,7 +23,7 @@ class Admins::ReservationsController < ApplicationController
 
     private
      def reservation_params
-        params.require(:reservation).permit(:dated_on, :title, :name, :staff)
+        params.require(:reservation).permit(:dated_on, :title, :staff, :name, :email, :password, :encrypted_password)
      end
 
 end

@@ -1,0 +1,16 @@
+<h2>問い合わせ</h2>
+<h3>問い合わせ内容</h3>
+
+
+
+<h3>問い合わせに対するお答え</h3>
+
+
+
+<%= form_with model:@contact, url:admins_reservations_path, local:true do |f| %>
+
+<%= f.submit "送信する" %>
+<% end %>
+
+
+<%= link_to "問い合わせ一覧", admins_contacts_path %>

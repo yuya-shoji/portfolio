@@ -1,18 +1,23 @@
 <h2>予約入力</h2>
-<%= form_with(model: @reservation, local: true) do |f| %>
+<%= form_with model: @reservation, url:log_reservations_path, local: true do |f| %>
 
 <h3>カレンダー</h3>
 
 
 
 <div>
-  <%= f.label :title %>
+  <%= f.label :title, "タイトル" %>
   <%= f.text_field :title %>
 </div>
 
 <div>
-  <%= f.label :staff %>
+  <%= f.label :staff, " 担当者" %>
   <%= f.text_field :staff %>
 </div>
 
+<div>
+  <%= f.submit "予約確認へ" %>
+</div>
+
 <% end %>
+

@@ -1,3 +1,9 @@
 <h2>お問い合わせ</h2>
 
 <p>質問や要望などお伝えしておきたいことがあればご記入ください。</p>
+
+<%= form_with model: @contact, url:contacts_path, local: true do |f| %>
+
+<%= f.submit "送信" %>
+
+<% end %>

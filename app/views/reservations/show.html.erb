@@ -1,1 +1,25 @@
 <h2>予約詳細</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>日時</th>
+            <th>タイトル</th>
+            <th>担当者</th>
+            <th>受付日時</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @reservations.each do |r| %>
+        <tr>
+            <td><%= r.dated_on %></td>
+            <td><%= r.title %></td>
+            <td><%= r.staff %></td>
+            <td><%= r.created_at %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to "お問い合わせ", contacts_path %>

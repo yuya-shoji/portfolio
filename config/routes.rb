@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
   patch '/customers/out' => 'customers#out', as: 'out_customers'
   get 'customers/quit' => 'customers#quit', as: 'quit_customers'
+  get 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customers'
   resources :customers, only:[:show, :edit, :update]
   get '/reservations/log' => 'reservations#log', as: 'log_reservations'
   post 'reservations/log', controller: 'reservations', action: 'log'

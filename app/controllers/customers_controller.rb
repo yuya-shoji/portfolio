@@ -21,7 +21,10 @@ class CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_active: true)
     reset_session
-    redirect_to root_path
+    redirect_to withdraw_customers_path
+  end
+
+  def withdraw
   end
 
   private

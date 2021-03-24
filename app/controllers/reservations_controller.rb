@@ -9,12 +9,13 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new
-    @reservation.save
+    @reservation = Reservation.new(reservation_params)
+    @reservation.save!
     redirect_to thank_reservations_path
   end
 
   def new
+    @reservation = Reservation.new
   end
 
   def log
@@ -25,7 +26,7 @@ class ReservationsController < ApplicationController
 
   private
   def reservation_params
-    params.require(:reservation).permit(:dated_on, :title, :name, :staff)
+    params.require(:reservation).permit(:customer_id, :dated_on, :title, :name, :staff)
   end
 
 end

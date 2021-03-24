@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_03_17_093108) do
     t.string "name"
     t.string "title"
     t.string "staff"
+    t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

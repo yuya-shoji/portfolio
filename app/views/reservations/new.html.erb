@@ -21,7 +21,7 @@
 
 <div>
   <%= f.label :staff, " 担当者" %>
-  <%= f.text_field :staff %>
+  <%= f.select :staff, [["田中","田中"],["鈴木","鈴木"],["佐藤","佐藤"]], include_blank: "選択してください" %>
 </div>
 
 <div>

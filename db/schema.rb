@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 2021_03_17_093108) do
   end
 
   create_table "contacts", force: :cascade do |t|
+    t.integer "reservation_id"
+    t.string "question"
+    t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -4,6 +4,10 @@
 
 <%= form_with model: @contact, url:contacts_path, local: true do |f| %>
 
+<%= f.text_area :contact, size:"65x20" %>
+
 <%= f.submit "送信" %>
 
 <% end %>
+
+<%= link_to "戻る", reservations_path %>

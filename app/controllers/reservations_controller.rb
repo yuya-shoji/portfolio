@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @reservations = Reservation.where(customer_id:current_customer.id)
+    @reservations = Reservation.find(params[:id])
   end
 
   def create
@@ -21,6 +21,7 @@ class ReservationsController < ApplicationController
   end
 
   def log
+    @reservation = Reservation.new(reservation_params)
   end
 
   def thank

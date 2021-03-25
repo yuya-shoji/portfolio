@@ -4,12 +4,14 @@
 
 
 <h3>タイトル</h3>
-
+<%= @reservation.title %>
 
 <h3>担当者</h3>
-
+<%= @reservation.staff %>
 <%= form_with model: @reservation, url:reservations_path, local: true do |f| %>
-
+<%= @reservation.customer_id %>
+<%= f.hidden_field :title, :value => @reservation.title %>
+<%= f.hidden_field :staff, :value => @reservation.staff %>
 <%= f.submit "確定" %>
 
 <% end %>

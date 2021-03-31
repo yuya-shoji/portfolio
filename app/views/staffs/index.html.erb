@@ -1,9 +1,8 @@
 <h2>担当者の情報</h2>
-  <%= form_with(model: @staff, local: true) do |f| %>
+  <%= form_with model: @staff,url:staffs_path,local: true do |f| %>
 
 <div>
   <%= f.label :name, "名前" %>
-  <%= f.text_field :name %>
 </div>
 
 <div>
@@ -23,4 +22,4 @@
 
   <% end %>
 
-  <%= link_to "予約一覧に戻る", reservations_path %>
+  <%= link_to "予約一覧に戻る", reservations_path, class: 'btn btn-primary' %>

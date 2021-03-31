@@ -13,4 +13,11 @@
 <%= @reservations.created_at %>
 
 
-<%= link_to "お問い合わせ", contacts_path %>
+<%= link_to "お問い合わせ", reservation_contacts_path(params[:id]), class: 'btn btn-primary' %>
+<% if @contacts.present? %>
+    <% @contacts.each do |contact| %>
+        <p><%= contact.question %></p>
+    <% end %>
+<% else %>
+    <p>お問い合わせはありません</p>
+<% end %>

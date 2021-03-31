@@ -1,12 +1,12 @@
 <h2>管理者予約詳細</h2>
-<h3>〇〇さんの予約詳細</h3>
+<h3><%= @customer.name %>さんの予約詳細</h3>
 
-<table>
+<table class = "table">
     <tbody>
         <div>
             <tr>
                 <td>会員ID</td>
-                <td></td>
+                <td><%= @customer.id %></td>
             </tr>
 
         </div>
@@ -14,42 +14,42 @@
         <div>
             <tr>
                 <td>氏名</td>
-                <td></td>
+                <td><%= @customer.name %></td>
             </tr>
         </div>
 
         <div>
             <tr>
                 <td>住所</td>
-                <td></td>
+                <td><%= @customer.address %></td>
             </tr>
         </div>
 
         <div>
             <tr>
                 <td>電話番号</td>
-                <td></td>
+                <td><%= @customer.telephone_number %></td>
             </tr>
         </div>
 
         <div>
             <tr>
                 <td>メールアドレス</td>
-                <td></td>
+                <td><%= @customer.email %></td>
             </tr>
         </div>
 
         <div>
             <tr>
                 <td>アポイント日時</td>
-                <td></td>
+                <td><%= @reservation.start_time %></td>
             </tr>
         </div>
 
         <div>
             <tr>
                 <td>タイトル</td>
-                <td></td>
+                <td><%= @reservation.title %></td>
             </tr>
         </div>
 
@@ -62,6 +62,8 @@
     </tbody>
 </table>
 
-<%= link_to "問い合わせ", admins_contacts_path %>
+<%= link_to "削除", admins_reservation_path(@reservation.id), method: :delete, class: 'btn btn-primary' %>
 
-<%= link_to "一覧へ", admins_reservations_path %>
+<%= link_to "問い合わせ", admins_reservation_contacts_path(@reservation.id), class: 'btn btn-primary' %>
+
+<%= link_to "一覧へ", admins_reservations_path, class: 'btn btn-primary' %>

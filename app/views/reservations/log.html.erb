@@ -1,17 +1,26 @@
 <h2>予約情報の確認</h2>
 
 <h3>カレンダーで選んだ日付</h3>
+<%= @reservation.start_time.strftime('%Y/%m/%d') %>
 
+<h3>開始時刻</h3>
+<%= @reservation.start_time.strftime('%H時%M分') %>
+<%= @reservation.end_time.strftime('%H時%M分') %>
 
 <h3>タイトル</h3>
 <%= @reservation.title %>
 
 <h3>担当者</h3>
-<%= @reservation.staff %>
+<%= @reservation.admin.name %>
+
 <%= form_with model: @reservation, url:reservations_path, local: true do |f| %>
 <%= @reservation.customer_id %>
 <%= f.hidden_field :title, :value => @reservation.title %>
-<%= f.hidden_field :staff, :value => @reservation.staff %>
-<%= f.submit "確定" %>
+<%= f.hidden_field :staff, :value => @reservation.admin.name %>
+<%= f.hidden_field :start_time, :value => @reservation.start_time %>
+<%= f.hidden_field :end_time, :value => @reservation.end_time %>
+<%= f.hidden_field :admin_id, :value => @reservation.admin_id %>
+<%= f.hidden_field :name, :value => current_customer.name %>
+<%= f.submit "確定",class: 'btn btn-primary' %>
 
 <% end %>

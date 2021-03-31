@@ -1,9 +1,9 @@
-<h2>マイページ<h2>
+<h2>マイページ</h2>
 
 <p>登録情報</p>
-<%= link_to "編集する", edit_customer_path(current_customer.id) %>
+<%= link_to "編集する", edit_customer_path(current_customer.id), class: 'btn btn-primary' %>
 
-<table>
+<table class = "table">
   <thead>
     <tr><th>氏名</th><td><%= current_customer.name %></td></tr>
     <tr><th>住所</th><td><%= current_customer.address %></td></tr>
@@ -12,6 +12,16 @@
   </thead>
 </table>
 
-<%= link_to "退会はこちら", quit_customers_path(current_customer.id) %>
+<%= link_to "退会はこちら", quit_customers_path(current_customer.id), class: 'btn btn-primary' %>
 
-<%= link_to "予約履歴", reservations_path %>
+<%= link_to "新規の予約と履歴はこちら", reservations_path, class: 'btn btn-primary' %>
+
+<%= month_calendar events: @reservations do |date, reservations| %>
+
+  <%= date.day %>
+<% reservations.each do |reservation| %>
+  <div>
+    <%= link_to reservation.title, reservation_path(reservation.id) %>
+  </div>
+  <% end %>
+<% end %>

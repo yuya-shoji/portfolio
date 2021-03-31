@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-  get 'admins' => 'homes#top', as: :root
-  get 'admins/about' => 'homes#about', as: 'about'
-  get 'admins/reservations/complete' => 'reservations#complete'
-  get 'admins/reservations/confirm' => 'reservations#confirm'
-  resources :reservations, expect:[:create]
-  resources :contacts, only:[:index, :create, :show]
+  get '' => 'homes#top', as: :root
+  get '/about' => 'homes#about', as: 'about'
+  get '/reservations/complete' => 'reservations#complete', as: 'complete_reservation'
+  get '/reservations/confirm' => 'reservations#confirm', as: 'confirm'
+  resources :reservations, expect:[:create] do
+    resources :contacts, only:[:index, :update, :show]
+  end
   resources :reservations_all, only:[:index]
 
   end
@@ -26,7 +27,8 @@ Rails.application.routes.draw do
   get '/reservations/log' => 'reservations#log', as: 'log_reservations'
   post 'reservations/log', controller: 'reservations', action: 'log'
   get '/reservations/thank' => 'reservations#thank', as: 'thank_reservations'
-  resources :reservations, only:[:index, :show, :new, :create]
   resources :staffs, only:[:index]
-  resources :contacts, only:[:index]
+  resources :reservations, only:[:index, :show, :new, :create] do
+    resources :contacts, only:[:index,:create]
+  end
 end

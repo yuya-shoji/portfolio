@@ -1,15 +1,18 @@
 class Admins::ReservationsController < ApplicationController
     def index
+        @reservations = Reservation.where(admin_id:current_admin.id)
     end
 
     def confirm
-        @reservation = Reservation.find(current_customer.id)
+        @id = reservation.find_by(admin)
     end
 
     def complete
     end
 
     def show
+        @reservation = Reservation.find(params[:id])
+        @customer = @reservation.customer
     end
 
     def edit
@@ -18,12 +21,15 @@ class Admins::ReservationsController < ApplicationController
     def update
     end
 
-    def destory
+    def destroy
+        @reservation = Reservation.find(params[:id])
+        @reservation.destroy
+        redirect_to admins_complete_reservation_path
     end
 
     private
      def reservation_params
-        params.require(:reservation).permit(:dated_on, :title, :staff, :name, :email, :password, :encrypted_password)
+        params.require(:reservation).permit(:id,:dated_on, :title, :staff, :name, :email, :password, :encrypted_password)
      end
 
 end

@@ -1,6 +1,7 @@
 <h2>管理者予約管理</h2>
-  <%= form_with(model: @reservation, local: true) do |f| %>
+<p>担当者<%= current_admin.name %>様</p>
 
-  <%= f.label :staff %>
-
-  <% end %>
+<% @reservations.each do |reservation|%>
+<p><%= reservation.customer.name %></p>
+<%= link_to reservation.id, admins_reservation_path(reservation.id) %>
+<% end %>

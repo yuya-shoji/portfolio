@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
 
   def show
+    @reservations = current_customer.reservations.all
   end
 
   def edit

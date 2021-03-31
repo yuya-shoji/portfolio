@@ -20,13 +20,22 @@
 </div>
 
 <div>
-  <%= f.label :staff, " 担当者" %>
-  <%= f.select :staff, [["田中","田中"],["鈴木","鈴木"],["佐藤","佐藤"]], include_blank: "選択してください" %>
+  <%= f.label :admin_id, " 担当者" %>
+  <%= f.select :admin_id, @hash, include_blank: "選択してください" %>
 </div>
 
 <div>
-  <%= f.submit "予約確認へ" %>
+  <%= f.label :start_time %>
+  <%= f.date_select :start_time %>
+  <%= f.time_select :time, {minute_step: 15} %>
+</div>
+<div>
+  <%= f.label :end_time %>
+  <%= f.date_select :end_time %>
+  <%= f.time_select :time, {minute_step: 15} %>
+</div>
+<div>
+  <%= f.submit "予約確認へ", class: 'btn btn-primary' %>
 </div>
 
 <% end %>
-

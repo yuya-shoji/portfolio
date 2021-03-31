@@ -1,5 +1,5 @@
 <h2>予約一覧</h2>
-<table>
+<table class = "ta">
     <thead>
         <tr>
             <th>予約日</th>
@@ -12,7 +12,7 @@
     <tbody>
         <% @reservations.each do |reservation| %>
         <tr>
-            <td><%= reservation.dated_on %></td>
+            <td><%= reservation.start_time %></td>
             <td><%= reservation.title %></td>
             <td><%= reservation.staff %></td>
             <td><%= reservation.created_at %></td>
@@ -21,4 +21,4 @@
     </tbody>
 </table>
 
-<%= link_to "新規予約", new_reservation_path %>
+<%= link_to "新規予約", new_reservation_path, class: 'btn btn-primary' %>

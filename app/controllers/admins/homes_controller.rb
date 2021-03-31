@@ -3,6 +3,8 @@ class Admins::HomesController < ApplicationController
   end
 
   def about
+    @admin = current_admin
+    @reservations = Reservation.where(staff:@admin.name)
   end
 
 end

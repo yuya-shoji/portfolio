@@ -1,5 +1,5 @@
 <h2>予約一覧</h2>
-<table class = "ta">
+<table class = "table">
     <thead>
         <tr>
             <th>予約日</th>
@@ -12,10 +12,10 @@
     <tbody>
         <% @reservations.each do |reservation| %>
         <tr>
-            <td><%= reservation.start_time %></td>
+            <td><%= reservation.start_time.strftime('%Y/%m/%d %H時%M分') %>~<%= reservation.end_time.strftime('%H時%M分') %></td>
             <td><%= reservation.title %></td>
-            <td><%= reservation.staff %></td>
-            <td><%= reservation.created_at %></td>
+            <td><%= link_to reservation.staff, staff_path(reservation.admin.id) %></td>
+            <td><%= reservation.created_at.strftime('%Y/%m/%d %H時%M分') %></td>
         </tr>
         <% end %>
     </tbody>

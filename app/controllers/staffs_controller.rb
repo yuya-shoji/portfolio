@@ -1,6 +1,7 @@
 class StaffsController < ApplicationController
 
-  def index
+  def show
+    @admin = Admin.find(params[:id])
   end
 
 end

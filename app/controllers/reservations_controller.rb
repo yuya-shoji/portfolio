@@ -22,7 +22,7 @@ class ReservationsController < ApplicationController
     @admins = Admin.all
     @hash = Hash.new {}
     @admins.each do |admin|
-      @hash[admin.id] = admin.id
+      @hash[admin.name] = admin.id
     end
   end
 

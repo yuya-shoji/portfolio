@@ -4,7 +4,6 @@ class Admins::ReservationsController < ApplicationController
     end
 
     def confirm
-        @id = reservation.find_by(admin)
     end
 
     def complete

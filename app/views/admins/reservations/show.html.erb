@@ -62,7 +62,7 @@
     </tbody>
 </table>
 
-<%= link_to "削除", admins_reservation_path(@reservation.id), method: :delete, class: 'btn btn-primary' %>
+<%= link_to "削除", admins_confirm_reservation_path(@reservation.id), class: 'btn btn-primary' %>
 
 <%= link_to "問い合わせ", admins_reservation_contacts_path(@reservation.id), class: 'btn btn-primary' %>
 

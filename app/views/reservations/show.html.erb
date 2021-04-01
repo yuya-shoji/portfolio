@@ -1,7 +1,7 @@
 <h2>予約詳細</h2>
 
 <h3>日時</h3>
-<%= @reservations.dated_on %>
+<%= @reservations.start_time.strftime('%Y/%m/%d') %>~<%= @reservations.end_time.strftime('%Y/%m/%d') %>
 
 <h3>タイトル</h3>
 <%= @reservations.title %>
@@ -10,7 +10,7 @@
 <%= @reservations.staff %>
 
 <h3>受付日</h3>
-<%= @reservations.created_at %>
+<%= @reservations.created_at.strftime('%H時%M分') %>
 
 
 <%= link_to "お問い合わせ", reservation_contacts_path(params[:id]), class: 'btn btn-primary' %>
@@ -21,3 +21,5 @@
 <% else %>
     <p>お問い合わせはありません</p>
 <% end %>
+
+<%= link_to "予約一覧へ", reservations_path, class: 'btn btn-primary' %>

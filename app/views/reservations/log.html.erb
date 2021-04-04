@@ -14,7 +14,6 @@
 <%= @reservation.admin.name %>
 
 <%= form_with model: @reservation, url:reservations_path, local: true do |f| %>
-<%= @reservation.customer_id %>
 <%= f.hidden_field :title, :value => @reservation.title %>
 <%= f.hidden_field :staff, :value => @reservation.admin.name %>
 <%= f.hidden_field :start_time, :value => @reservation.start_time %>

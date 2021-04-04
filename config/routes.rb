@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   get '' => 'homes#top', as: :root
   get '/about' => 'homes#about', as: 'about'
   get '/reservations/complete' => 'reservations#complete', as: 'complete_reservation'
-  get '/reservations/confirm/:id' => 'reservations#confirm', as: 'confirm_reservation'
   post '/registrations/confirm', controller:'reservations', action: 'confirm'
   resources :reservations, expect:[:create] do
     resources :contacts, only:[:index, :update, :show]
   end
   resources :reservations_all, only:[:index]
+  get '/reservations_all/search' => 'reservations_all#search', as: 'reservations_all_search'
 
   end
 
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get '/reservations/log' => 'reservations#log', as: 'log_reservations'
   post 'reservations/log', controller: 'reservations', action: 'log'
   get '/reservations/thank' => 'reservations#thank', as: 'thank_reservations'
+  get '/reservations/search' => 'reservations#search', as:'reservations_search'
   resources :staffs, only:[:show]
   resources :reservations, only:[:index, :show, :new, :create] do
     resources :contacts, only:[:index,:create]

@@ -1,5 +1,6 @@
 <h2>予約入力</h2>
-<%= form_with model:@reservation, url:log_reservations_path, local: true do |f| %>
+<%= render 'layouts/error', reservation: @reservation %>
+<%= form_with model:@reservation, url:log_reservations_path,method: :post,  local: true do |f| %>
 
 <h3>カレンダー</h3>
 
@@ -13,6 +14,7 @@
   </div>
   <% end %>
 <% end %>
+
 
 <div>
   <%= f.label :title, "タイトル" %>

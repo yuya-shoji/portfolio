@@ -16,3 +16,30 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+nav{
+ border-bottom:8px solid#34589e;
+ background:#2a6fbe;
+}
+nav ul{
+ list-style:none;
+ display:flex;
+ justify-content:flex-end;
+ margin:0;
+ padding:10px 10px 0 10px;
+}
+nav li{
+ box-sizing:border-box;
+ float:left;
+}
+nav li a{
+ display:block;
+ padding:10px 20px;
+ text-align:center;
+ font-size:18px;
+ color:#ffffff;
+}
+nav li a:hover{
+ background:#34589e;
+ color:#ffffff;
+}

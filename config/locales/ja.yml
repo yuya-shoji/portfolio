@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        required: を選択してください
+    attributes:
+      reservation:
+        title: タイトル
+        admin: 担当者

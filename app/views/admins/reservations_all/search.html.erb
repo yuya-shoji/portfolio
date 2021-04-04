@@ -1,6 +1,7 @@
-<h2>予約一覧</h2>
-<%= form_with model:@reservation, url:reservations_search_path,method: :get,local true do |f| %>
-<% f.select :option, []
+
+<%= form_with model:@reservation, url:admins_reservations_all_search_path, method: :get, local: true do |f|%>
+<%= f.select :keyword,@hash %>
+<%= f.submit %>
 <% end %>
 <table class = "table">
     <thead>
@@ -16,12 +17,10 @@
         <% @reservations.each do |reservation| %>
         <tr>
             <td><%= reservation.start_time.strftime('%Y/%m/%d %H時%M分') %>~<%= reservation.end_time.strftime('%H時%M分') %></td>
-            <td><%= link_to reservation.title, reservation_path(reservation.id) %></td>
+            <td><%= reservation.title %></td>
             <td><%= reservation.staff %></td>
             <td><%= reservation.created_at.strftime('%Y/%m/%d %H時%M分') %></td>
         </tr>
         <% end %>
     </tbody>
 </table>
-
-<%= link_to "新規予約", new_reservation_path, class: 'btn btn-success' %>

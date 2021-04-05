@@ -1,7 +1,8 @@
 class ReservationsController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   def index
-    @reservations = Reservation.where(customer_id:current_customer.id)
+    @reservations = current_customer.reservations.order("#{sort_column} #{sort_direction}")
   end
 
   def show
@@ -45,10 +46,6 @@ class ReservationsController < ApplicationController
     end
   end
 
-  def search
-    
-  end
-
   def thank
   end
 
@@ -57,4 +54,11 @@ class ReservationsController < ApplicationController
     params.require(:reservation).permit(:customer_id,:admin_id,:start_time, :end_time, :dated_on, :title, :name, :staff)
   end
 
+  def sort_direction
+  %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def sort_column
+  Reservation.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
+  end
 end

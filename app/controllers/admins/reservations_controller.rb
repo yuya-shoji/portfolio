@@ -4,6 +4,7 @@ class Admins::ReservationsController < ApplicationController
     end
 
     def confirm
+        @reservation = Reservation.find(params[:id])
     end
 
     def complete

@@ -1,5 +1,5 @@
 <p>予約削除を希望している人のリスト</p>
 <p>削除しますがよろしいですか</p>
 
-<%= link_to "削除する", admins_reservation_path(params[:id]), method: :delete %>
-<%= link_to "削除しない", admins_reservation_path >
+<%= link_to "戻る", admins_reservation_path %>
+<%= link_to "削除する", admins_reservation_path(params[:id]), method: :delete, class:"btn btn-danger" %>

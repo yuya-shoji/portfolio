@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get '' => 'homes#top', as: :root
   get '/about' => 'homes#about', as: 'about'
   get '/reservations/complete' => 'reservations#complete', as: 'complete_reservation'
-  post '/registrations/confirm', controller:'reservations', action: 'confirm'
+  get '/reservations/:id/confirm' => 'reservations#confirm', as: 'reservation_confirm'
+  post '/reservations/:id/confirm', controller: 'registrations', action:'confirm'
   resources :reservations, expect:[:create] do
     resources :contacts, only:[:index, :update, :show]
   end

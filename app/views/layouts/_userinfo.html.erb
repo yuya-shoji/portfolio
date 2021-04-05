@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-4">
+    <table class = "table">
+      <thead>
+        <tr><th>氏名</th><td><%= current_customer.name %></td></tr>
+        <tr><th>住所</th><td><%= current_customer.address %></td></tr>
+        <tr><th>電話番号</th><td><%= current_customer.telephone_number %></td></tr>
+        <tr><th>メールアドレス</th><td><%= current_customer.email %></td></tr>
+      </thead>
+    </table>
+    <div class="mb-2">
+    <%= link_to "退会はこちら", quit_customers_path(current_customer.id), class: 'btn btn-primary' %>
+    <%= link_to "編集する", edit_customer_path(current_customer.id), class: 'btn btn-success' %>
+    <% @reservations = current_customer.reservations.where(start_time:Date.today.in_time_zone.all_day) %>
+    <% if @reservations.present? %>
+    </div>
+    <hr>
+    <div>
+      <p class="text-center">今日のご予約</p>
+      <table class="table">
+        <tr>
+          <th >開始時刻</th>
+          <th>タイトル</th>
+        </tr>
+          <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= reservation.start_time.strftime("%H時%M分") %></td>
+            <td><%= reservation.title %></td>
+          </tr>
+          <% end %>
+      </table>
+    <% else %>
+    <p>今日の予約はありません</p>
+    <% end %>
+    </div>
+    </div>

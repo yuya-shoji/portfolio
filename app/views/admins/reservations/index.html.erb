@@ -1,7 +1,24 @@
 <h2>管理者予約管理</h2>
 <p>担当者<%= current_admin.name %></p>
 
-<% @reservations.each do |reservation| %>
-<p><%= reservation.customer.name %></p>
-<%= link_to reservation.id, admins_reservation_path(reservation.id) %>
-<% end %>
+<table class = "table">
+    <thead>
+        <tr>
+            <th>予約日</th>
+            <th>タイトル</th>
+            <th>顧客名</th></th>
+            <th>受付日</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @reservations.each do |reservation| %>
+        <tr>
+            <td><%= reservation.start_time.strftime('%Y/%m/%d %H時%M分') %>~<%= reservation.end_time.strftime('%H時%M分') %></td>
+            <td><%= link_to reservation.title, reservation_path(reservation.id) %></td>
+            <td><%= reservation.customer.name %></td>
+            <td><%= reservation.created_at.strftime('%Y/%m/%d %H時%M分') %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

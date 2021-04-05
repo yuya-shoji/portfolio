@@ -8,13 +8,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <header>
     <nav>
     <ul>
       <% if customer_signed_in? %>
         <li>
-          <%= link_to "About", about_path %>
+          <%= link_to "ホーム", customer_path(current_customer) %>
         </li>
         <li>
           <%= link_to "予約一覧", reservations_path %>
@@ -26,8 +26,15 @@
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
         </li>
       <% elsif admin_signed_in? %>
+
         <li>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          <%= link_to "ホーム", admins_root_path %>
+        </li>
+        <li>
+          <%= link_to "予約一覧",admins_reservations_path %>
+        </li>
+        <li>
+
         </li>
         <li>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
@@ -42,6 +49,9 @@
       <% end %>
     </ul>
     </nav>
+    </header>
+    <main>
     <%= yield %>
+    </main>
   </body>
 </html>

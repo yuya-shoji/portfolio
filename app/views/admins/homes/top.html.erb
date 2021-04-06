@@ -1,1 +1,16 @@
-<p><%= @admin.id %></p>
+<div class="container">
+  <h2>管理者マイページ</h2>
+  <br>
+  <%= render 'layouts/admininfo' %>
+    <div class="col-lg-8">
+      <%= month_calendar events: @reservations do |date, reservations| %>
+          <%= date.day %>
+          <% reservations.each do |reservation| %>
+          <div>
+            <%= link_to reservation.customer.name, admins_reservation_path(reservation.id) %>
+          </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>

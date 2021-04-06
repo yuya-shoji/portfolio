@@ -11,10 +11,11 @@
     <div class="mb-2">
     <%= link_to "退会はこちら", quit_customers_path(current_customer.id), class: 'btn btn-primary' %>
     <%= link_to "編集する", edit_customer_path(current_customer.id), class: 'btn btn-success' %>
-    <% @reservations = current_customer.reservations.where(start_time:Date.today.in_time_zone.all_day) %>
-    <% if @reservations.present? %>
     </div>
     <hr>
+
+    <% @reservations = current_customer.reservations.where(start_time:Date.today.in_time_zone.all_day) %>
+    <% if @reservations.present? %>
     <div>
       <p class="text-center">今日のご予約</p>
       <table class="table">
@@ -29,8 +30,8 @@
           </tr>
           <% end %>
       </table>
+    </div>
     <% else %>
     <p>今日の予約はありません</p>
     <% end %>
-    </div>
     </div>

@@ -21,9 +21,18 @@ class ReservationsController < ApplicationController
     end
   end
 
-  def new
+  def select
     @reservation = Reservation.new
-    @reservations = Reservation.where(customer_id:current_customer)
+    @admins = Admin.all
+    @hash = Hash.new {}
+    @admins.each do |admin|
+      @hash[admin.name] = admin.id
+    end
+  end
+
+  def new
+    @reservation = Reservation.new(reservation_params)
+    @reservations = Reservation.where(end_time: DateTime.now..Float::INFINITY).where(admin_id:@reservation.admin_id)
     @admins = Admin.all
     @hash = Hash.new {}
     @admins.each do |admin|
@@ -35,7 +44,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.customer_id = current_customer.id
     if @reservation.invalid?
-      @reservations = Reservation.where(customer_id:current_customer)
+      @reservations = Reservation.where(end_time: DateTime.now..Float::INFINITY).where(admin_id:@reservation.admin_id)
       @admins = Admin.all
       @hash = Hash.new {}
       @admins.each do |admin|

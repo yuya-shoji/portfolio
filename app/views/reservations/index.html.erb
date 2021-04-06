@@ -1,8 +1,12 @@
 <h2>予約一覧</h2>
 <div class="float-right">
 <%= form_with model:@reservation, url:reservations_path, method: :get, local: true do |f|%>
+
 <%= f.label :sort, 'ソート' %>
-<%= f.select :sort, [['受付日', 'created_at'],['予約日','start_time']],{include_blank:true,selected: 1} %>
+<%= f.select :sort, [['受付日', 'created_at'],['予約日','start_time']] %>
+
+<%= f.select :direction, [['昇順', 'asc'],['降順','desc']] %>
+
 <%= f.submit '並び替える' %>
 <% end %>
 </div>

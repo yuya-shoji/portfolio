@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-lg-4">
+      <table class = "table">
+        <thead>
+          <tr><th>氏名</th><td><%= current_admin.name %></td></tr>
+          <tr><th>電話番号</th><td><%= current_admin.phone_num %></td></tr>
+          <tr><th>メールアドレス</th><td><%= current_admin.email %></td></tr>
+        </thead>
+      </table>
+
+    <% @reservations = current_admin.reservation.where(start_time:Date.today.in_time_zone.all_day) %>
+    <% if @reservations.present? %>
+    <div>
+      <p class="text-center">今日のご予約</p>
+      <table class="table">
+        <tr>
+          <th >開始時刻</th>
+          <th>タイトル</th>
+        </tr>
+          <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= reservation.start_time.strftime("%H時%M分") %></td>
+            <td><%= reservation.title %></td>
+          </tr>
+          <% end %>
+      </table>
+    </div>
+    <% else %>
+    <p>今日の予約はありません</p>
+    <% end %>
+    </div>

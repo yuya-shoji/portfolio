@@ -1,29 +1,26 @@
 <h2>予約入力</h2>
 <%= render 'layouts/error', reservation: @reservation %>
-<%= form_with model:@reservation, url:log_reservations_path,method: :post,  local: true do |f| %>
 
-<h3>カレンダー</h3>
+<%= week_calendar events: @reservations do |date, reservations| %>
+  <% reservations.each do |reservation| %>
 
-<%= month_calendar events: @reservations do |date, reservations| %>
-
-  <%= date.day %>
-
-<% reservations.each do |reservation| %>
-  <div>
-    <%= link_to reservation.title, reservation %>
+  <div class="text-center">
+    <% if reservation.start_time.strftime("%H:%M") == @time.strftime("%H:%M")  %>
+      <%= link_to reservation.start_time.strftime("%H:%M")+"~"+reservation.end_time.strftime("%H:%M"), reservation %>
+    <% end %>
   </div>
   <% end %>
 <% end %>
 
 
+<%= form_with model:@reservation, url:log_reservations_path,method: :post,  local: true do |f| %>
 <div>
   <%= f.label :title, "タイトル" %>
   <%= f.text_field :title %>
 </div>
 
 <div>
-  <%= f.label :admin_id, " 担当者" %>
-  <%= f.select :admin_id, @hash, include_blank: "選択してください" %>
+ <p><%= @reservation.admin.name %></p>
 </div>
 
 <div>
@@ -38,4 +35,7 @@
   <%= f.submit "予約確認へ", class: 'btn btn-primary' %>
 </div>
 
+<%= f.hidden_field :admin_id, :value => @reservation.admin_id %>
+
 <% end %>
+

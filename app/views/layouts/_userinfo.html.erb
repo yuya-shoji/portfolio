@@ -17,7 +17,7 @@
     <% @reservations = current_customer.reservations.where(start_time:Date.today.in_time_zone.all_day) %>
     <% if @reservations.present? %>
     <div>
-      <p class="text-center">今日のご予約</p>
+      <p class="text-center">本日のご予約</p>
       <table class="table">
         <tr>
           <th >開始時刻</th>
@@ -32,6 +32,6 @@
       </table>
     </div>
     <% else %>
-    <p>今日の予約はありません</p>
+    <p>本日の予約はありません</p>
     <% end %>
     </div>

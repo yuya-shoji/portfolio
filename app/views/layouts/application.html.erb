@@ -11,10 +11,14 @@
   <body>
     <header>
     <nav>
-    <ul>
+    <ul class="header_drop">
       <% if customer_signed_in? %>
         <li>
-          <%= link_to "ホーム", customer_path(current_customer) %>
+          <%= link_to "ホーム", root_path %>
+          <ul>
+            <li><%= link_to "マイページ", customer_path(current_customer) %></li>
+            <li><%= link_to "about", about_path %></li>
+          </ul>
         </li>
         <li>
           <%= link_to "予約一覧", reservations_path %>

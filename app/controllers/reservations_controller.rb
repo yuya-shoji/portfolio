@@ -1,5 +1,7 @@
 class ReservationsController < ApplicationController
   helper_method :sort_column, :sort_direction
+  before_action :set_reservation, only: [:show]
+
 
   def index
     @reservations = current_customer.reservations.order("#{sort_column} #{sort_direction}")
@@ -8,6 +10,7 @@ class ReservationsController < ApplicationController
   def show
     @reservations = Reservation.find(params[:id])
     @contacts = Contact.where(reservation_id:@reservations)
+    @qr_code = RQRCode::QRCode.new(@r.name).as_svg.html_safe
   end
 
   def create
@@ -61,6 +64,10 @@ class ReservationsController < ApplicationController
   private
   def reservation_params
     params.require(:reservation).permit(:customer_id,:admin_id,:start_time, :end_time, :dated_on, :title, :name, :staff)
+  end
+
+  def set_reservation
+      @r = Reservation.find(params[:id])
   end
 
   def sort_direction

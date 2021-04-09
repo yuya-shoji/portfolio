@@ -26,15 +26,17 @@ nav{
  border-bottom:8px solid#34589e;
  background:#2a6fbe;
 }
-nav ul{
+nav ul.header_drop{
  list-style:none;
  display:flex;
  justify-content:flex-end;
+ table-layout:fixed;
  margin:0;
  padding:10px 10px 0 10px;
 }
-nav li{
+nav ul.header_drop > li{
  box-sizing:border-box;
+ position:relative;
  float:left;
 }
 nav li a{

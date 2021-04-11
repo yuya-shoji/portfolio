@@ -22,12 +22,15 @@
     </thead>
 
     <tbody>
-      <% @tim = Range.new(9,18) %>
+      <% @repeat = Range.new(0,6) %>
       <% @time = Time.zone.parse("2000-01-01 09:00:00") %>
       <% date_range.each_slice(7) do |week| %>
-      <% @tim.each do |time|%>
+      <% @repeat.each do |time|%>
         <tr>
-          <td><%= @time.strftime("%H:%M") %></td>
+          <td><%= @time.strftime("%H:%M") %>~
+          <% @time+= 3600 %>
+          <%=  @time.strftime("%H:%M") %>
+          </td>
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
@@ -40,7 +43,7 @@
               <% end %>
             <% end %>
           <% end %>
-           <% @time += 3600 %>
+           <% @time += 1800 %>
           </tr>
           <% end %>
       <% end %>

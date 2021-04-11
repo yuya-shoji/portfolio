@@ -17,6 +17,9 @@
 <% if @contacts.present? %>
     <% @contacts.each do |contact| %>
         <p><%= contact.question %></p>
+        <% if contact.answer.present? %>
+        <p><%= contact.answer %></p>
+        <% end %>
     <% end %>
 <% else %>
     <p>お問い合わせはありません</p>

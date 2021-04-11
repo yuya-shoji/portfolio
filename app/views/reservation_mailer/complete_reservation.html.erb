@@ -1,0 +1,20 @@
+<h2><%= @customer.name %> 様</h2>
+<p>この度は、ご予約ありがとうございました。<br>
+</p>
+
+<table>
+    <tr>
+        <th>タイトル</th><td><%= @reservation.title %></td>
+    </tr>
+    <tr>
+        <th>担当者</th><td><%= @reservation.staff %></td>
+    </tr>
+    <tr>
+        <th>開始時刻</th><td><%= @reservation.start_time %></td>
+    </tr>
+    <tr>
+        <th>終了時刻</th><td><%= @reservation.end_time %></td>
+    </tr>
+</table>
+
+<p>今後とも Scheduler をよろしくお願いいたします。</p>

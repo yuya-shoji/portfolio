@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
 
 
   def index
-    @reservations = current_customer.reservations.order("#{sort_column} #{sort_direction}")
+    @reservations = current_customer.reservations.where(end_time: DateTime.now..Float::INFINITY).order("#{sort_column} #{sort_direction}")
   end
 
   def show
@@ -18,6 +18,7 @@ class ReservationsController < ApplicationController
     @reservation.customer_id = current_customer.id
     if @reservation.valid?
       @reservation.save
+      ReservationMailer.complete_reservation(@reservation.customer,@reservation).deliver
       redirect_to thank_reservations_path
     else
       render "new"

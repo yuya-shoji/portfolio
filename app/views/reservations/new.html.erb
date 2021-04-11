@@ -25,11 +25,11 @@
 
 <div>
   <%= f.label :start_time %>
-  <%= f.datetime_select :start_time, {minute_step: 15} %>
+  <%= f.datetime_select :start_time, {minute_step: 30} %>
 </div>
 <div>
   <%= f.label :end_time %>
-  <%= f.datetime_select :end_time, {minute_step: 15} %>
+  <%= f.time_select :end_time, {minute_step: 15} %>
 </div>
 <div>
   <%= f.submit "予約確認へ", class: 'btn btn-primary' %>

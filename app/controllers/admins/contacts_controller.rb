@@ -7,7 +7,9 @@ class Admins::ContactsController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
     @contact.reservation_id = params[:reservation_id]
+    @customer = Customer.find_by(id:@contact.reservation.customer_id)
     @contact.update(contact_params)
+    ContactMailer.send_when_admin_reply(@customer, @contact).deliver
     redirect_to action: :index
   end
 

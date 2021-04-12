@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_customer!
 
   def show
     @reservations = current_customer.reservations.all

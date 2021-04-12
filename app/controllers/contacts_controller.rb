@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
     @contact = Contact.new

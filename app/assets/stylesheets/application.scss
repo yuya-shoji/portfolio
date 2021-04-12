@@ -18,35 +18,33 @@
  @import 'font-awesome';
 
 main{
- margin:10px;
+ max-width:auto;
+ min-width:500px;
 }
 
-
-nav{
- border-bottom:8px solid#34589e;
- background:#2a6fbe;
+.keyvisual{
+ background:image-url("images.jpeg") center bottom no-repeat;
+ background-position:center;
+ background-size:cover;
+ height: 600px;
+ width: 100%;
+ position: relative;
+ text-align: center;
 }
-nav ul.header_drop{
- list-style:none;
- display:flex;
- justify-content:flex-end;
- table-layout:fixed;
- margin:0;
- padding:10px 10px 0 10px;
+.keyvisual:before{
+ background-color: rgba(0,0,0,0.4);
+ content: ' ';
+ position:absolute;
+ top: 0;
+ right: 0;
+ bottom: 0;
+ left: 0;
 }
-nav ul.header_drop > li{
- box-sizing:border-box;
- position:relative;
- float:left;
-}
-nav li a{
- display:block;
- padding:10px 20px;
- text-align:center;
- font-size:18px;
- color:#ffffff;
-}
-nav li a:hover{
- background:#34589e;
+.site-name{
+ position: absolute;
+ top: 40%;
+ width: 100%;
+ text-align: center;
+ font-size:70px;
  color:#ffffff;
 }

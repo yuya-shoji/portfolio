@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :set_reservation, only: [:show]
+  before_action :authenticate_customer!
 
 
   def index

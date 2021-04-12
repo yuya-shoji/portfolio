@@ -1,8 +1,8 @@
 <%= form_with model:@reservation, url:new_reservation_path,method: :get, local: true  do |f| %>
 
-<div>
+<div class="form-group justify-content-center">
   <%= f.label :admin_id, " 担当者" %>
-  <%= f.select :admin_id, @hash, include_blank: "選択してください" %>
+  <%= f.select :admin_id, @hash, include_blank: "選択してください" ,class:"form-select"%>
 </div>
 
 <div>

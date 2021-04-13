@@ -1,6 +1,7 @@
 class Admins::ReservationsController < ApplicationController
     def index
         @reservations = Reservation.where(admin_id:current_admin.id)
+        @reservations = Reservation.all.page(params[:page]).per(8)
     end
 
     def confirm

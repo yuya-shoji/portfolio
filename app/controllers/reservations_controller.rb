@@ -6,6 +6,7 @@ class ReservationsController < ApplicationController
 
   def index
     @reservations = current_customer.reservations.where(end_time: DateTime.now..Float::INFINITY).order("#{sort_column} #{sort_direction}")
+    @reservations = Reservation.all.page(params[:page]).per(8)
   end
 
   def show

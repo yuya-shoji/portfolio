@@ -25,8 +25,7 @@
         <tr>
             <td><%= reservation.start_time.strftime('%Y/%m/%d %H時%M分') %>~<%= reservation.end_time.strftime('%H時%M分') %></td>
             <td><%= link_to reservation.title, reservation_path(reservation.id) %></td>
-            <td><%= reservation.staff %>
-            %></td>
+            <td><%= reservation.staff %></td>
             <td><%= reservation.created_at.strftime('%Y/%m/%d %H時%M分') %></td>
         </tr>
         <% end %>
@@ -34,3 +33,4 @@
 </table>
 
 <%= link_to "新規予約", reservations_select_path, class: 'btn btn-success' %>
+<%= paginate @reservations %>

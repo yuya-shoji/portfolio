@@ -5,7 +5,8 @@
   <% reservations.each do |reservation| %>
 
   <div class="text-center">
-    <% if reservation.start_time.strftime("%H:%M") == @time.strftime("%H:%M")  %>
+    <% if reservation.start_time.strftime("%H:%M") == @time.strftime("%H:%M")   %>
+      <h3>X</h3>
       <%= link_to reservation.start_time.strftime("%H:%M")+"~"+reservation.end_time.strftime("%H:%M"), reservation %>
     <% end %>
   </div>
@@ -24,12 +25,16 @@
 </div>
 
 <div>
-  <%= f.label :start_time %>
+  <%= f.label :start_time,'開始時刻' %>
   <%= f.datetime_select :start_time, {minute_step: 30} %>
 </div>
 <div>
-  <%= f.label :end_time %>
-  <%= f.time_select :end_time, {minute_step: 15} %>
+  <%= f.label :end_time, '終了時刻'%>
+  <%= f.time_select :end_time, {minute_step: 30} %>
+</div>
+<div>
+  <%= f.label :detail, 'ご要望'%>
+  <%= f.text_area :detail %>
 </div>
 <div>
   <%= f.submit "予約確認へ", class: 'btn btn-primary' %>

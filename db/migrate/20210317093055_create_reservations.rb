@@ -7,6 +7,7 @@ class CreateReservations < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :title
       t.string :staff
+      t.string :detail
       t.datetime :start_time
       t.datetime :end_time
       t.timestamps

@@ -1,5 +1,5 @@
 <p>全管理者の予約一覧</p>
 <%= form_with model:@reservation, url:admins_reservations_all_search_path, method: :get, local: true do |f|%>
 <%= f.select :keyword,@hash %>
-<%= f.submit %>
+<%= f.submit "確認する", class: 'btn btn-primary' %>
 <% end %>

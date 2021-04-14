@@ -13,6 +13,9 @@
 <h3>担当者</h3>
 <%= @reservation.admin.name %>
 
+<h3>ご要望</h3>
+<%= @reservation.detail %>
+
 <%= form_with model: @reservation, url:reservations_path, local: true do |f| %>
 <%= f.hidden_field :title, :value => @reservation.title %>
 <%= f.hidden_field :staff, :value => @reservation.admin.name %>
@@ -20,6 +23,7 @@
 <%= f.hidden_field :end_time, :value => @reservation.end_time %>
 <%= f.hidden_field :admin_id, :value => @reservation.admin_id %>
 <%= f.hidden_field :name, :value => current_customer.name %>
+<%= f.hidden_field :detail, :value => @reservation.detail %>
 <%= f.submit "確定",class: 'btn btn-primary' %>
 
 <% end %>

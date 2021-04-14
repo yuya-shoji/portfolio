@@ -12,16 +12,21 @@
 <h3>受付日</h3>
 <%= @reservations.created_at.strftime('%H時%M分') %>
 
+<h3>ご要望</h3>
+<%= @reservations.detail %>
 
-<%= link_to "お問い合わせ", reservation_contacts_path(params[:id]), class: 'btn btn-primary' %>
-<% if @contacts.present? %>
-    <% @contacts.each do |contact| %>
-        <p><%= contact.question %></p>
-        <% if contact.answer.present? %>
-        <p><%= contact.answer %></p>
+<div>
+    <% if @contacts.present? %>
+        <% @contacts.each do |contact| %>
+            <p><%= contact.question %></p>
+            <% if contact.answer.present? %>
+            <p><%= contact.answer %></p>
+            <% end %>
         <% end %>
+    <% else %>
+        <p>お問い合わせはありません</p>
     <% end %>
-<% else %>
-    <p>お問い合わせはありません</p>
-<% end %>
-<%= link_to "予約一覧へ", reservations_path, class: 'btn btn-primary' %>
+<p> <%= link_to "お問い合わせ", reservation_contacts_path(params[:id]), class: 'btn btn-primary' %></p>
+</div>
+
+<p> <%= link_to "予約一覧へ", reservations_path, class: 'btn btn-primary' %> </p>

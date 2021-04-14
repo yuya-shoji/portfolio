@@ -3,7 +3,7 @@
 <div>
   <%= contact.question %>
 <% if contact.answer.present? %>
-<p><%= link_to contact.question, admins_reservation_contact_path(params[:reservation_id],contact.id) %></p>
+<p><%= link_to contact.answer, admins_reservation_contact_path(params[:reservation_id],contact.id) %></p>
 <% else %>
 <p><%= link_to "返答する", admins_reservation_contact_path(params[:reservation_id],contact.id), class: 'btn btn-primary' %></p>
 

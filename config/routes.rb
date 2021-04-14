@@ -33,7 +33,6 @@ Rails.application.routes.draw do
   post 'reservations/log', controller: 'reservations', action: 'log'
   get 'reservations/thank' => 'reservations#thank', as: 'thank_reservations'
   get 'reservations/search' => 'reservations#search', as:'reservations_search'
-  resources :staffs, only:[:show]
   resources :reservations, only:[:index, :show, :new, :create] do
     resources :contacts, only:[:index,:create]
   end

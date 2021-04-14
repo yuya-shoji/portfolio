@@ -12,7 +12,6 @@ class ReservationsController < ApplicationController
   def show
     @reservations = Reservation.find(params[:id])
     @contacts = Contact.where(reservation_id:@reservations)
-    @qr_code = RQRCode::QRCode.new(@r.name).as_svg.html_safe
   end
 
   def create
@@ -66,7 +65,7 @@ class ReservationsController < ApplicationController
 
   private
   def reservation_params
-    params.require(:reservation).permit(:customer_id,:admin_id,:start_time, :end_time, :dated_on, :title, :name, :staff)
+    params.require(:reservation).permit(:customer_id,:admin_id,:start_time, :end_time, :dated_on, :title, :name, :staff, :detail)
   end
 
   def set_reservation

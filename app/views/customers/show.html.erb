@@ -2,12 +2,12 @@
   <h2 class="mb-3">マイページ</h2>
   <%= render 'layouts/userinfo' %>
     <div class="col-lg-8">
-    <%= month_calendar events: @reservations do |date, reservations| %>
+    <%= month_calendar events: @all_reservations do |date, reservations| %>
 
       <%= date.day %>
       <% reservations.each do |reservation| %>
       <div>
-        <%= link_to reservation.title, reservation_path(reservation.id) %>
+        <%= link_to reservation.start_time.wday, reservation_path(reservation.id) %>
       </div>
       <% end %>
     <% end %>

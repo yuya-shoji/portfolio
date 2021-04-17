@@ -1,6 +1,6 @@
 <% if reservation.errors.any? %>
 <div id="error_messages">
-    <h3><%= pluralize(reservation.errors.count, "個のエラー") %> 予約に失敗しました</h3>
+    <h3>予約に失敗しました</h3>
     <ul>
     <% reservation.errors.full_messages.each do |message| %>
         <li><%= message %></li>

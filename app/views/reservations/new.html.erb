@@ -1,16 +1,26 @@
 <h2>予約入力</h2>
 <%= render 'layouts/error', reservation: @reservation %>
 
-<%= week_calendar events: @reservations do |date, reservations| %>
-  <% reservations.each do |reservation| %>
-
+<%= week_calendar events: @reservations do |date, reservations|%>
   <div class="text-center">
-    <% if reservation.start_time.strftime("%H:%M") == @time.strftime("%H:%M")   %>
-      <h3>X</h3>
-      <%= link_to reservation.start_time.strftime("%H:%M")+"~"+reservation.end_time.strftime("%H:%M"), reservation %>
+
+      <% if date.wday == 0 || date.wday == 6 %>
+      <p>X</p>
+      <% end %>
+
+    <% reservations.each do |reservation| %>
+      <% if reservation.start_time.strftime("%H:%M") >= @t1.strftime("%H:%M") && reservation.start_time.strftime("%H:%M") < @t2.strftime("%H:%M") %>
+        <% if reservation.customer_id == current_customer.id %>
+          <%= link_to reservation.start_time.strftime("%H:%M")+"~"+reservation.end_time.strftime("%H:%M"), reservation %>
+        <% else %>
+          <h4>×</h4>
+        <% end %>
+      <% else %>
+
+      <% end %>
     <% end %>
   </div>
-  <% end %>
+
 <% end %>
 
 
@@ -26,11 +36,11 @@
 
 <div>
   <%= f.label :start_time,'開始時刻' %>
-  <%= f.datetime_select :start_time, {minute_step: 30} %>
+  <%= f.datetime_select :start_time, {minute_step: 15, start_hour: 9, end_hour:19} %>
 </div>
 <div>
   <%= f.label :end_time, '終了時刻'%>
-  <%= f.time_select :end_time, {minute_step: 30} %>
+  <%= f.datetime_select :end_time, {minute_step: 15, start_hour: 9, end_hour:19} %>
 </div>
 <div>
   <%= f.label :detail, 'ご要望'%>

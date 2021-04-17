@@ -9,7 +9,7 @@
         <%= link_to t('simple_calendar.next', default: '次の週へ'), calendar.url_for_next_view %>
   </div>
 
-  <table class="table table-striped">
+  <table class="table">
     <thead>
       <tr>
         <th></th>
@@ -22,14 +22,14 @@
     </thead>
 
     <tbody>
-      <% @repeat = Range.new(0,6) %>
-      <% @time = Time.zone.parse("2000-01-01 09:00:00") %>
+      <% @repeat = Range.new(0,9) %>
+      <% @t1 = Time.zone.parse("2000-01-01 09:00:00") %>
+      <% @t2 = Time.zone.parse("2000-01-01 10:00:00") %>
       <% date_range.each_slice(7) do |week| %>
       <% @repeat.each do |time|%>
         <tr>
-          <td><%= @time.strftime("%H:%M") %>~
-          <% @time+= 3600 %>
-          <%=  @time.strftime("%H:%M") %>
+          <td>
+            <%= @t1.strftime("%H:%M") %>~<%= @t2.strftime("%H:%M") %>
           </td>
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
@@ -43,7 +43,8 @@
               <% end %>
             <% end %>
           <% end %>
-           <% @time += 1800 %>
+           <% @t1 += 3600 %>
+           <% @t2 += 3600 %>
           </tr>
           <% end %>
       <% end %>

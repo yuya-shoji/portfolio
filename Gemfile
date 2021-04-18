@@ -71,3 +71,8 @@ gem 'rqrcode'
 gem 'rqrcode_png'
 gem 'chunky_png'
 gem 'kaminari'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

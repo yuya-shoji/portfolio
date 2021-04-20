@@ -3,7 +3,7 @@
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
-#
+
 default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -29,8 +29,4 @@ production:
   collation: utf8mb4_general_ci
   host: <%= ENV['DB_HOST'] %>
   username: <%= ENV['DB_USERNAME'] %>
-<<<<<<< HEAD
   password: <%= ENV['DB_PASSWORD'] %>
-=======
-  password: <%= ENV['DB_PASSWORD'] %>
->>>>>>> 9d8183fca35118c8f9ca84aeed92e88067ead748
